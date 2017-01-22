@@ -13,14 +13,14 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <style type="text/css">
-        html{
-            font-size:10px !important; 
+        html {
+            font-size:10px !important;
         }
-        body{
+        body {
             padding:0;
             margin:0;
         }
-    	canvas{
+    	canvas {
     		width:15rem;
     		height:15rem;
             top:50%;
@@ -41,16 +41,16 @@
     var currentSteps = 0;
 
     /*计算颜色rgb值*/
-    function changeColorToRGB(color){
+    function changeColorToRGB(color) {
         var color = color.replace("#","");
-        if(color.length == 6){
+        if(color.length == 6) {
             return parseInt(color.substr(0,2),16) + "," + parseInt(color.substr(2,2),16) + "," + parseInt(color.substr(4,2),16);
         }
         return parseInt((color.substr(0,1) + color.substr(0,1)),16) + "," + parseInt((color.substr(1,1) + color.substr(1,1)),16) + "," + parseInt((color.substr(2,1) + color.substr(2,1)),16);
     }
 
     /*画园*/
-    function drawCircle(context,centerX,centerY,radius,beginAngle,endAngle,color,opacity){//type 0 园 1 圈
+    function drawCircle(context,centerX,centerY,radius,beginAngle,endAngle,color,opacity) {//type 0 园 1 圈
         var color = changeColorToRGB(color);
         context.beginPath();
         context.arc(centerX,centerY,radius,beginAngle,endAngle,true);
@@ -59,7 +59,7 @@
         context.fill();
     }
 
-    function drawQuan(context,centerX,centerY,radius,beginAngle,endAngle,color,opacity,roundWidth){//靠，画扇形不能关闭路径，否则是去掉剩下部分
+    function drawQuan(context,centerX,centerY,radius,beginAngle,endAngle,color,opacity,roundWidth) {//靠，画扇形不能关闭路径，否则是去掉剩下部分
         var color = changeColorToRGB(color);
         context.beginPath();
         context.arc(centerX,centerY,radius,beginAngle,endAngle,false);
@@ -68,13 +68,13 @@
         context.stroke();
     }
 
-    function getTimesSize(size,times){
+    function getTimesSize(size,times) {
         var abs = size-75;
         return 75 + abs*times;
     }
 
     /*画中间图案*/
-    function drawImage(context,times){
+    function drawImage(context,times) {
         context.beginPath();
         context.moveTo(getTimesSize(53,times),getTimesSize(57,times));
         context.arcTo(getTimesSize(53,times),getTimesSize(53,times),getTimesSize(57,times),getTimesSize(53,times),4*times);
@@ -88,11 +88,11 @@
         context.arcTo(getTimesSize(60,times),getTimesSize(63,times),getTimesSize(63,times),getTimesSize(63,times),3*times);
         context.lineTo(getTimesSize(60,times),getTimesSize(63,times));
         context.lineTo(getTimesSize(93,times),getTimesSize(63,times));
-        context.arcTo(getTimesSize(97,times),getTimesSize(63,times),getTimesSize(97,times),getTimesSize(67,times),4*times);             
-        context.lineTo(getTimesSize(97,times),getTimesSize(74,times));          
+        context.arcTo(getTimesSize(97,times),getTimesSize(63,times),getTimesSize(97,times),getTimesSize(67,times),4*times);
+        context.lineTo(getTimesSize(97,times),getTimesSize(74,times));
         context.lineTo(getTimesSize(85,times),getTimesSize(74,times));
         context.arcTo(getTimesSize(81,times),getTimesSize(74,times),getTimesSize(81,times),getTimesSize(78,times),4*times);
-        context.arcTo(getTimesSize(81,times),getTimesSize(82,times),getTimesSize(85,times),getTimesSize(82,times),4*times);      
+        context.arcTo(getTimesSize(81,times),getTimesSize(82,times),getTimesSize(85,times),getTimesSize(82,times),4*times);
         context.lineTo(getTimesSize(97,times),getTimesSize(82,times));
         context.lineTo(getTimesSize(97,times),getTimesSize(93,times));
         context.arcTo(getTimesSize(97,times),getTimesSize(97,times),getTimesSize(93,times),getTimesSize(97,times),4*times);
@@ -109,10 +109,10 @@
         drawCircle(context,getTimesSize(89,times),getTimesSize(78,times),2*times,0,Math.PI*2,"#fff",1);
     }
 
-    function loading(context,step){
+    function loading(context,step) {
         context.clearRect(0, 0, 150, 150);
-        if(step <= 17){
-            switch(step){
+        if(step <= 17) {
+            switch(step) {
                 case 0:
                     break;
                 case 1:
@@ -162,168 +162,168 @@
                     //2
                     drawImage(context,1);
                     break;
-                case 10:       
-                    //1  
-                    drawCircle(context,75,75,58,0,Math.PI*2,"#6C4D9D",1); 
+                case 10:
+                    //1
+                    drawCircle(context,75,75,58,0,Math.PI*2,"#6C4D9D",1);
                     //2
                     drawCircle(context,75,75,48,0,Math.PI*2,"#40246C",1);
                     //3
                     drawImage(context,1);
                     break;
-                case 11:       
-                    //1  
-                    drawCircle(context,75,75,58,0,Math.PI*2,"#6C4D9D",1); 
+                case 11:
+                    //1
+                    drawCircle(context,75,75,58,0,Math.PI*2,"#6C4D9D",1);
                     //2
                     drawCircle(context,75,75,48,0,Math.PI*2,"#40246C",1);
                     //3
                     drawImage(context,1);
                     break;
-                case 12:       
-                    //1  
-                    drawCircle(context,75,75,58,0,Math.PI*2,"#6C4D9D",1); 
+                case 12:
+                    //1
+                    drawCircle(context,75,75,58,0,Math.PI*2,"#6C4D9D",1);
                     //2
                     drawCircle(context,75,75,48,0,Math.PI*2,"#40246C",1);
                     //3
                     drawImage(context,1);
                     break;
-                case 13:       
-                    //1  
-                    drawCircle(context,75,75,58,0,Math.PI*2,"#6C4D9D",1); 
+                case 13:
+                    //1
+                    drawCircle(context,75,75,58,0,Math.PI*2,"#6C4D9D",1);
                     //2
                     drawCircle(context,75,75,48,0,Math.PI*2,"#40246C",1);
                     //3
                     drawImage(context,1);
                     break;
-                case 14:       
-                    //1  
-                    drawCircle(context,75,75,58,0,Math.PI*2,"#6C4D9D",1); 
+                case 14:
+                    //1
+                    drawCircle(context,75,75,58,0,Math.PI*2,"#6C4D9D",1);
                     //2
                     drawCircle(context,75,75,48,0,Math.PI*2,"#40246C",1);
-                    //3 
+                    //3
                     drawQuan(context,75,75,67,0,Math.PI*2,"#CCABFF",1,9);
                     //3
                     drawImage(context,1);
                     break;
-                case 15:       
-                    //1  
-                    drawCircle(context,75,75,58,0,Math.PI*2,"#6C4D9D",1); 
+                case 15:
+                    //1
+                    drawCircle(context,75,75,58,0,Math.PI*2,"#6C4D9D",1);
                     //2
                     drawCircle(context,75,75,48,0,Math.PI*2,"#40246C",1);
-                    //3 
+                    //3
                     drawQuan(context,75,75,67,0,Math.PI*2,"#CCABFF",1,9);
                     //3
                     drawImage(context,1);
                     break;
-                case 16:       
-                    //1  
-                    drawCircle(context,75,75,58,0,Math.PI*2,"#6C4D9D",1); 
+                case 16:
+                    //1
+                    drawCircle(context,75,75,58,0,Math.PI*2,"#6C4D9D",1);
                     //2
                     drawCircle(context,75,75,48,0,Math.PI*2,"#40246C",1);
-                    //3 
+                    //3
                     drawQuan(context,75,75,67,0,Math.PI*2,"#CCABFF",1,9);
                     //3
                     drawImage(context,1);
                     break;
-                case 17:       
-                    //1  
-                    drawCircle(context,75,75,58,0,Math.PI*2,"#6C4D9D",1); 
+                case 17:
+                    //1
+                    drawCircle(context,75,75,58,0,Math.PI*2,"#6C4D9D",1);
                     //2
                     drawCircle(context,75,75,48,0,Math.PI*2,"#40246C",1);
-                    //3                  
-                    drawQuan(context,75,75,67,rads(33.75),rads(56.25),"#CCABFF",1,9); 
-                    drawQuan(context,75,75,67,rads(78.75),rads(101.25),"#CCABFF",1,9); 
-                    drawQuan(context,75,75,67,rads(123.75),rads(146.25),"#CCABFF",1,9); 
-                    drawQuan(context,75,75,67,rads(168.75),rads(191.25),"#CCABFF",1,9); 
-                    drawQuan(context,75,75,67,rads(213.75),rads(236.25),"#CCABFF",1,9); 
-                    drawQuan(context,75,75,67,rads(258.75),rads(281.25),"#CCABFF",1,9); 
-                    drawQuan(context,75,75,67,rads(303.75),rads(326.25),"#CCABFF",1,9); 
-                    drawQuan(context,75,75,67,rads(348.75),rads(11.25),"#CCABFF",1,9); 
+                    //3
+                    drawQuan(context,75,75,67,rads(33.75),rads(56.25),"#CCABFF",1,9);
+                    drawQuan(context,75,75,67,rads(78.75),rads(101.25),"#CCABFF",1,9);
+                    drawQuan(context,75,75,67,rads(123.75),rads(146.25),"#CCABFF",1,9);
+                    drawQuan(context,75,75,67,rads(168.75),rads(191.25),"#CCABFF",1,9);
+                    drawQuan(context,75,75,67,rads(213.75),rads(236.25),"#CCABFF",1,9);
+                    drawQuan(context,75,75,67,rads(258.75),rads(281.25),"#CCABFF",1,9);
+                    drawQuan(context,75,75,67,rads(303.75),rads(326.25),"#CCABFF",1,9);
+                    drawQuan(context,75,75,67,rads(348.75),rads(11.25),"#CCABFF",1,9);
                     //3
                     drawImage(context,1);
                 break;
             }
         }
-        if(step > 17){
+        if(step > 17) {
             var _steps = step % 18 * 20;
             currentSteps = step;
-            drawCircle(context,75,75,58,0,Math.PI*2,"#6C4D9D",1); 
+            drawCircle(context,75,75,58,0,Math.PI*2,"#6C4D9D",1);
             //2
             drawCircle(context,75,75,48,0,Math.PI*2,"#40246C",1);
-            //3                  
-            drawQuan(context,75,75,67,rads((337.5 + _steps) % 360),rads((22.5 + _steps) % 360),"#CCABFF",1,9); 
-            drawQuan(context,75,75,67,rads((67.5 + _steps) % 360),rads((112.5 + _steps) % 360),"#CCABFF",1,9); 
-            drawQuan(context,75,75,67,rads((157.5 + _steps) % 360),rads((202.5 + _steps) % 360),"#CCABFF",1,9); 
+            //3
+            drawQuan(context,75,75,67,rads((337.5 + _steps) % 360),rads((22.5 + _steps) % 360),"#CCABFF",1,9);
+            drawQuan(context,75,75,67,rads((67.5 + _steps) % 360),rads((112.5 + _steps) % 360),"#CCABFF",1,9);
+            drawQuan(context,75,75,67,rads((157.5 + _steps) % 360),rads((202.5 + _steps) % 360),"#CCABFF",1,9);
             drawQuan(context,75,75,67,rads((247.5 + _steps) % 360),rads((292.5 + _steps) % 360),"#CCABFF",1,9);
             //3
             drawImage(context,1);
         }
     }
 
-    function ending(context,step){
+    function ending(context,step) {
         context.clearRect(0, 0, 150, 150);
         var _steps = (step + currentSteps) % 18 * 20;
-        if(step < 3){          
+        if(step < 3) {
             //2
             drawCircle(context,75,75,48,0,Math.PI*2,"#40246C",1);
-            //3                  
-            drawQuan(context,75,75,67,rads((337.5 + _steps) % 360),rads((22.5 + _steps) % 360),"#CCABFF",1,9); 
-            drawQuan(context,75,75,67,rads((67.5 + _steps) % 360),rads((112.5 + _steps) % 360),"#CCABFF",1,9); 
-            drawQuan(context,75,75,67,rads((157.5 + _steps) % 360),rads((202.5 + _steps) % 360),"#CCABFF",1,9); 
+            //3
+            drawQuan(context,75,75,67,rads((337.5 + _steps) % 360),rads((22.5 + _steps) % 360),"#CCABFF",1,9);
+            drawQuan(context,75,75,67,rads((67.5 + _steps) % 360),rads((112.5 + _steps) % 360),"#CCABFF",1,9);
+            drawQuan(context,75,75,67,rads((157.5 + _steps) % 360),rads((202.5 + _steps) % 360),"#CCABFF",1,9);
             drawQuan(context,75,75,67,rads((247.5 + _steps) % 360),rads((292.5 + _steps) % 360),"#CCABFF",1,9);
             //3
             drawImage(context,1);
-        }else if(step < 4){
+        }else if(step < 4) {
             //2
             drawCircle(context,75,75,48,0,Math.PI*2,"#40246C",1);
-            //3                  
-            drawQuan(context,75,75,67,rads((337.5 + _steps) % 360),rads((22.5 + _steps) % 360),"#CCABFF",1,9); 
-            //drawQuan(context,75,75,67,rads((67.5 + _steps) % 360),rads((112.5 + _steps) % 360),"#CCABFF",1,9); 
-            drawQuan(context,75,75,67,rads((157.5 + _steps) % 360),rads((202.5 + _steps) % 360),"#CCABFF",1,9); 
+            //3
+            drawQuan(context,75,75,67,rads((337.5 + _steps) % 360),rads((22.5 + _steps) % 360),"#CCABFF",1,9);
+            //drawQuan(context,75,75,67,rads((67.5 + _steps) % 360),rads((112.5 + _steps) % 360),"#CCABFF",1,9);
+            drawQuan(context,75,75,67,rads((157.5 + _steps) % 360),rads((202.5 + _steps) % 360),"#CCABFF",1,9);
             //drawQuan(context,75,75,67,rads((247.5 + _steps) % 360),rads((292.5 + _steps) % 360),"#CCABFF",1,9);
             //3
             drawImage(context,1);
-        }else if(step < 6){
+        }else if(step < 6) {
             _steps = (step + currentSteps) % 18 * 45;
             //2
             drawCircle(context,75,75,48,0,Math.PI*2,"#40246C",1);
-            //3                  
-            drawQuan(context,75,75,67,rads((337.5 + _steps) % 360),rads((22.5 + _steps) % 360),"#CCABFF",1,9); 
-            //drawQuan(context,75,75,67,rads((67.5 + _steps) % 360),rads((112.5 + _steps) % 360),"#CCABFF",1,9); 
-            //drawQuan(context,75,75,67,rads((157.5 + _steps) % 360),rads((202.5 + _steps) % 360),"#CCABFF",1,9); 
-        }else if(step < 7){
+            //3
+            drawQuan(context,75,75,67,rads((337.5 + _steps) % 360),rads((22.5 + _steps) % 360),"#CCABFF",1,9);
+            //drawQuan(context,75,75,67,rads((67.5 + _steps) % 360),rads((112.5 + _steps) % 360),"#CCABFF",1,9);
+            //drawQuan(context,75,75,67,rads((157.5 + _steps) % 360),rads((202.5 + _steps) % 360),"#CCABFF",1,9);
+        }else if(step < 7) {
             drawCircle(context,75,75,48,0,Math.PI*2,"#40246C",0.6);
             //2
             drawImage(context,0.6);
-        }else if(step < 8){
+        }else if(step < 8) {
             drawCircle(context,75,75,48,0,Math.PI*2,"#40246C",0.4);
             //2
             drawImage(context,0.4);
-        }else if(step < 9){
+        }else if(step < 9) {
             drawCircle(context,75,75,48,0,Math.PI*2,"#40246C",0.2);
             //2
             drawImage(context,0.2);
-        }else{
+        }else {
 
         }
     }
 
     //转换弧度
-    function rads(x){
+    function rads(x) {
         return Math.PI*x/180;
     }
 
-    function drawCanvas(id){
+    function drawCanvas(id) {
         var canvas = document.getElementById(id);
-        if(canvas == null){
+        if(canvas == null) {
             return false;
         }
 
         var context = canvas.getContext("2d");//画布
 
         var times = 0;
-        var interal = setInterval(function () {
+        var interal = setInterval(function ()  {
             loading(context,times);
-            if(times == 35){
+            if(times == 35) {
                 clearInterval(interal);
                 endCanvas("myCanvas");
             }
@@ -332,18 +332,18 @@
 
     }
 
-    function endCanvas(id){
+    function endCanvas(id) {
         var canvas = document.getElementById(id);
-        if(canvas == null){
+        if(canvas == null) {
             return false;
         }
 
         var context = canvas.getContext("2d");//画布
 
         var times = 0;
-        var interal = setInterval(function () {
+        var interal = setInterval(function ()  {
             ending(context,times);
-             if(times == 9){
+             if(times == 9) {
                  clearInterval(interal);
              }
             times++;
